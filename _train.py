@@ -90,7 +90,7 @@ def train(model, netIn, netOut):
         mode='min'
     )
     callbackList = [checkpoint]
-    model.load_weights("./weights-98-1.9351.hdf5") # we trained twice, this picks up where we left off (last updated file)
+    model.load_weights("./data/weights/weights-99-0.1758.hdf5") # we trained twice, this picks up where we left off (last updated file)
     model.fit(netIn, netOut, epochs=100, batch_size=64, callbacks=callbackList)
 
 if __name__ == '__main__':
