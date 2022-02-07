@@ -21,7 +21,7 @@ def trainNet():
 
 def getNotes():
     notes = []
-    for file in glob.glob("music-gen/music/*.mid"):
+    for file in glob.glob("./music-samples/*.mid"):
         midi = converter.parse(file)
         print("Parsing %s" % file)
         toParse = None
