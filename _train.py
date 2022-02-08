@@ -81,7 +81,7 @@ def createNet(netIn, nVoc):
 def train(model, netIn, netOut):
     filepath = "./data/weights/weights-{epoch:02d}-{loss:.4f}.hdf5"
     earlystop = EarlyStopping(
-        monitor="val_loss",
+        monitor="loss",
         patience=5,
         restore_best_weights=True
     )
