@@ -9,9 +9,7 @@ from keras.layers import LSTM
 from keras.layers import Activation
 from keras.layers import BatchNormalization as BatchNorm
 from keras.utils import np_utils
-from keras.callbacks import ModelCheckpoint
-import tensorflow as tf
-tf.config.run_functions_eagerly(True)
+from keras.callbacks import ModelCheckpoint, EarlyStopping
 def trainNet():
     notes = getNotes()
     nVoc = len(set(notes))
@@ -82,6 +80,11 @@ def createNet(netIn, nVoc):
 
 def train(model, netIn, netOut):
     filepath = "./data/weights/weights-{epoch:02d}-{loss:.4f}.hdf5"
+    earlystop = EarlyStopping(
+        monitor="val_loss",
+        patience=5,
+        restore_best_weights=True
+    )
     checkpoint = ModelCheckpoint(
         filepath,
         monitor='loss',
@@ -89,7 +92,7 @@ def train(model, netIn, netOut):
         save_best_only=True,
         mode='min'
     )
-    callbackList = [checkpoint]
+    callbackList = [checkpoint, earlystop]
     model.load_weights("./data/weights/weights-99-0.1758.hdf5") # we trained twice, this picks up where we left off (last updated file)
     model.fit(netIn, netOut, epochs=100, batch_size=64, callbacks=callbackList)
 
