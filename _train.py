@@ -2,14 +2,14 @@ import glob
 import pickle
 import numpy
 from music21 import converter, instrument, note, chord
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import Dropout
-from keras.layers import LSTM
-from keras.layers import Activation
-from keras.layers import BatchNormalization as BatchNorm
-from keras.utils import np_utils
-from keras.callbacks import ModelCheckpoint, EarlyStopping
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dropout
+from tensorflow.keras.layers import LSTM
+from tensorflow.keras.layers import Activation
+from tensorflow.keras.layers import BatchNormalization as BatchNorm
+from tensorflow.keras.utils import np_utils
+from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 def trainNet():
     notes = getNotes()
     nVoc = len(set(notes))
