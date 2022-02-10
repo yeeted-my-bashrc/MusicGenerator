@@ -8,7 +8,7 @@ from tensorflow.keras.layers import Dropout
 from tensorflow.keras.layers import LSTM
 from tensorflow.keras.layers import Activation
 from tensorflow.keras.layers import BatchNormalization as BatchNorm
-from tensorflow.keras.utils import np_utils
+from keras.utils import np_utils
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 def trainNet():
     notes = getNotes()
